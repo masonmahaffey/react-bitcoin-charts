@@ -1,31 +1,61 @@
+//GLOBAL VARIABLES
+//======================================================================================
 var dataProvider = [];
+var dateStart = '';
+var dateEnd = '';
 
-       $.getJSON('http://api.coindesk.com/v1/bpi/historical/close.json?start=2014-09-01&end=2016-09-01',function(returnData){
-        console.log(returnData);
-        $.each( returnData.bpi, function( key, value ) {
 
-            var temp = key;
-            dataProvider.push({
-                date:key,
-                value:value
-            });
-        });
-        dataProvider.forEach(function(returnValue){
-                console.log(returnValue);
-        });
-    });
-
-    // chart2.addListener("dataUpdated", zoomChart2);
-
-    // function zoomChart2(){
-    //     chart2.zoomToDates(new Date(2012, 0, 2), new Date(2012, 0, 13));
-    // }
 
 
 
 
 $(document).ready(function(){
 
+$( function() {
+    $( "#datepicker" ).datepicker("option", "dateFormat","yy-mm-dd");
+    $('#datepickerB').datepicker("option", "dateFormat","yy-mm-dd");
+});
+
+$('#datepicker').datepicker();
+$('#datepickerB').datepicker();
+
+
+
+//JQUERY INPUT LISTENER THAT PULLS THE INPUT VALUES AND PLACES THEM INTO VARIABLES
+//TO BE USED IN THE API CALL
+//======================================================================================
+ $('#date-input').submit(function(event){
+    event.preventDefault();
+    dateStart = $('.date-1').val();
+    dateEnd = $('.date-2').val();
+    console.log(dateStart);
+    console.log(dateEnd);
+
+    //GET THE API DATA AND STORE IT IN AN OBJECT
+    //==================================================================================
+    $.getJSON('http://api.coindesk.com/v1/bpi/historical/close.json?start=' + dateStart + '&end=' + dateEnd ,function(returnData){
+    console.log(returnData);
+    $.each( returnData.bpi, function( key, value ) {
+
+        var temp = key;
+        dataProvider.push({
+            date:key,
+            value:value
+        });
+    });
+    dataProvider.forEach(function(returnValue){
+            console.log(returnValue);
+    });
+    });
+    setTimeout(renderChart(),500);
+
+});  
+
+
+
+//RENDER THE CHART
+//======================================================================================
+function renderChart() {
  var chart = AmCharts.makeChart("chartdiv", {
         "type": "serial",
         "theme": "light",
@@ -98,6 +128,11 @@ $(document).ready(function(){
     function zoomChart(){
         chart.zoomToDates(new Date(2014, 0, 2), new Date(2014, 0, 13));
     }
-
-
+}
 });
+
+    // chart2.addListener("dataUpdated", zoomChart2);
+
+    // function zoomChart2(){
+    //     chart2.zoomToDates(new Date(2012, 0, 2), new Date(2012, 0, 13));
+    // }

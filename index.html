@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Stock-Chart</title>
+
+	<style>
+	#chartdiv {
+		width	: 100%;
+		height	: 500px;
+	}										
+	</style>
+
+</head>
+
+<!-- Dependencies -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+<body>
+
+
+
+<!-- Resources -->
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+<script type="text/javascript" src="js/index.js"></script>
+<link rel="stylesheet" type="text/css" href="css/index.css">
+
+<!-- HTML -->
+
+<nav class="navbar navbar-inverse" id="navbar-home">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">BitcoinCharts</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+		<div class="row">
+			<form id="date-input">
+				<p class="block-style">Enter first date: </p>
+				<input type="text" name="bitcoin-date-1" placeholder="YYYY-MM-DD" class="block-style date-1" size='30' id="datepicker">
+				<p class="block-style p2">Enter second date: </p>
+				<input type="text" name="bitcoin-date-2" placeholder="YYYY-MM-DD" class="block-style date-2" size="30" id="datepickerB">
+				<input type="submit" style="margin-left: 10px;">
+			</form>
+		</div>
+		<div class="row">
+			
+		</div>
+	</div>
+	<div class="col-md-2"></div>
+
+</div>
+
+<div class="container">
+    <div id="chartdiv"></div>
+</div>
+</body>
+</html>
